@@ -6,3 +6,9 @@
 
 */bin
 */obj
+
+*/.vscode/
+
+/.vscode
+
+/.vscode/*
