@@ -1,11 +1,11 @@
 namespace Eventyrerlauget.Exceptions;
 
-// Kastes hvis en spellcaster forsøger at kaste en besværgelse uden nok mana.
-// Encounter fanger den og lader karakteren fumle turen i stedet for at crashe.
+// Thrown when a spellcaster tries to cast without enough mana.
+// Encounter should catch this and let the character fumble the turn instead of crashing.
 public class InsufficientManaException : Exception
 {
     public InsufficientManaException(string characterName, int required, int available)
-        : base($"{characterName} har ikke mana nok ({available}/{required} krævet).")
+        : base($"{characterName} does not have enough mana ({available}/{required} required).")
     {
         CharacterName = characterName;
         Required = required;
