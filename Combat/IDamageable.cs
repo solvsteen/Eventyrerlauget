@@ -3,8 +3,8 @@ namespace Eventyrerlauget.Combat;
 public interface IDamageable
 {
     string Name { get; }
-    int CurrentHitPoints { get; }
-    int MaxHitPoints { get; }
+    int HP { get; }
+    int MaxHP { get; }
     bool IsAlive { get; }
 
     void TakeDamage(int damage);
