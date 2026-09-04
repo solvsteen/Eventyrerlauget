@@ -9,6 +9,8 @@ namespace Eventyrerlauget.Combat;
 /// </summary>
 internal class Encounter
 {
+    //TODO: statusEffects?
+
     private readonly Party _party;
     private readonly List<Monster> _monsters;
     private readonly IDiceRoller _dice;
@@ -19,7 +21,7 @@ internal class Encounter
     /// <param name="party">The party participating in the encounter.</param>
     /// <param name="monsters">The monsters participating in the encounter.</param>
     /// <param name="die">The dice roller used in the encounter.</param>
-    internal Encounter( string name, Party party, List<Monster> monsters, IDiceRoller die)
+    internal Encounter(string name, Party party, List<Monster> monsters, IDiceRoller die)
     {
         _party = party;
         _monsters = monsters;
