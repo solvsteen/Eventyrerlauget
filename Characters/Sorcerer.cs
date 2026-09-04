@@ -16,7 +16,7 @@ public class Sorcerer : Character, ISpellcaster
     {
         if (maxMana <= 0)
         {
-            throw new ArgumentException("Maks. mana skal være positivt.", nameof(maxMana));
+            throw new ArgumentException("Max mana must be positive.", nameof(maxMana));
         }
 
         MaxMana = maxMana;
@@ -25,6 +25,12 @@ public class Sorcerer : Character, ISpellcaster
 
     public string CastSpell(IDamageable target, IDiceRoller diceRoller)
     {
+        // Same rule as Character.Attack: a defeated caster cannot spend mana.
+        if (!IsAlive)
+        {
+            throw new CharacterIsDefeatedException(Name);
+        }
+
         if (CurrentMana < SpellManaCost)
         {
             throw new InsufficientManaException(Name, SpellManaCost, CurrentMana);
@@ -34,6 +40,6 @@ public class Sorcerer : Character, ISpellcaster
         int damage = diceRoller.Roll(10) + SpellPowerBonus;
         target.TakeDamage(damage);
 
-        return $"{Name} kaster en ildkugle på {target.Name} for {damage} magisk skade (mana: {CurrentMana}/{MaxMana}).";
+        return $"{Name} casts a fireball at {target.Name} for {damage} magical damage (mana: {CurrentMana}/{MaxMana}).";
     }
 }
