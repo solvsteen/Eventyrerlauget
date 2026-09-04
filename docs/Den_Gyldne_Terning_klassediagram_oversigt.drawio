@@ -1,0 +1,232 @@
+<mxfile host="Electron" agent="ChatGPT">
+  <diagram name="Den Gyldne Terning – Oversigt" id="dgt-clean-overview">
+    <mxGraphModel dx="2054" dy="1249" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bg" parent="1" style="rounded=0;fillColor=#f7f9fc;strokeColor=none;selectable=0;movable=0;resizable=0;" value="" vertex="1">
+          <mxGeometry height="1200" width="1800" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=28;fontColor=#111827;" value="&lt;b&gt;Den Gyldne Terning – klassediagram&lt;/b&gt;" vertex="1">
+          <mxGeometry height="45" width="900" x="50" y="25" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=14;fontColor=#64748b;" value="Ryddet op efter ansvar og arv. Læs hvert felt oppefra og ned." vertex="1">
+          <mxGeometry height="28" width="900" x="50" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="panel_char" parent="1" style="rounded=0;arcSize=18;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#d9e0ea;strokeWidth=1.5;shadow=1;align=left;verticalAlign=top;fontFamily=Arial;fontSize=20;fontStyle=1;spacingTop=16;spacingLeft=54;fontColor=#172033;" value="Karakterer" vertex="1">
+          <mxGeometry height="725" width="880" x="50" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="panel_item" parent="1" style="rounded=0;arcSize=18;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#d9e0ea;strokeWidth=1.5;shadow=1;align=left;verticalAlign=top;fontFamily=Arial;fontSize=20;fontStyle=1;spacingTop=16;spacingLeft=54;fontColor=#172033;" value="Items og udstyr" vertex="1">
+          <mxGeometry height="430" width="790" x="960" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="panel_dice" parent="1" style="rounded=0;arcSize=18;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#d9e0ea;strokeWidth=1.5;shadow=1;align=left;verticalAlign=top;fontFamily=Arial;fontSize=20;fontStyle=1;spacingTop=16;spacingLeft=54;fontColor=#172033;" value="Terninger" vertex="1">
+          <mxGeometry height="270" width="790" x="960" y="565" as="geometry" />
+        </mxCell>
+        <mxCell id="panel_flow" parent="1" style="rounded=0;arcSize=18;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#d9e0ea;strokeWidth=1.5;shadow=1;align=left;verticalAlign=top;fontFamily=Arial;fontSize=20;fontStyle=1;spacingTop=16;spacingLeft=54;fontColor=#172033;" value="Spilflow" vertex="1">
+          <mxGeometry height="285" width="1700" x="50" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="num1" parent="1" style="ellipse;html=1;aspect=fixed;fillColor=#334155;strokeColor=#334155;fontColor=#ffffff;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;" value="1" vertex="1">
+          <mxGeometry height="32" width="32" x="68" y="128" as="geometry" />
+        </mxCell>
+        <mxCell id="num2" parent="1" style="ellipse;html=1;aspect=fixed;fillColor=#334155;strokeColor=#334155;fontColor=#ffffff;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;" value="2" vertex="1">
+          <mxGeometry height="32" width="32" x="978" y="128" as="geometry" />
+        </mxCell>
+        <mxCell id="num3" parent="1" style="ellipse;html=1;aspect=fixed;fillColor=#334155;strokeColor=#334155;fontColor=#ffffff;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;" value="3" vertex="1">
+          <mxGeometry height="32" width="32" x="978" y="583" as="geometry" />
+        </mxCell>
+        <mxCell id="num4" parent="1" style="ellipse;html=1;aspect=fixed;fillColor=#334155;strokeColor=#334155;fontColor=#ffffff;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;" value="4" vertex="1">
+          <mxGeometry height="32" width="32" x="68" y="878" as="geometry" />
+        </mxCell>
+        <mxCell id="idamageable" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#fff4c7;strokeColor=#d6b656;" value="&lt;font color=&quot;#64748b&quot; style=&quot;font-size:11px&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;IDamageable&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ HP / MaxHP / IsAlive&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ TakeDamage() / Heal()&lt;/div&gt;" vertex="1">
+          <mxGeometry height="95" width="220" x="355" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="ispellcaster" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#fff4c7;strokeColor=#d6b656;" value="&lt;font color=&quot;#64748b&quot; style=&quot;font-size:11px&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;ISpellcaster&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ Mana / MaxMana&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ CastSpell()&lt;/div&gt;" vertex="1">
+          <mxGeometry height="86" width="205" x="665" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="character" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#e5eefc;strokeColor=#6c8ebf;" value="&lt;font color=&quot;#64748b&quot; style=&quot;font-size:11px&quot;&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;Character&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;- inventory / equippedItems&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;# maxHitPoints&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ Name / Level / IsAlive&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ Heal() / TakeDamage()&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ AddItem() / UsePotion()&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ Equip() / Attack()&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="290" x="320" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="monster" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#fff0df;strokeColor=#d79b00;" value="&lt;b&gt;Monster&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ Name / IsAlive&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ PoisonChancePercent&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ IsPoisonous&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ Attack()&lt;/div&gt;" vertex="1">
+          <mxGeometry height="145" width="205" x="80" y="325" as="geometry" />
+        </mxCell>
+        <mxCell id="warrior" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#eef7ec;strokeColor=#82b366;" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;Fighter&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-family: monospace; font-size: 11px;&quot;&gt;+ Attack()&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="175" x="210" y="595" as="geometry" />
+        </mxCell>
+        <mxCell id="mage" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#eef7ec;strokeColor=#82b366;" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;Sorcerer&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-family: monospace; font-size: 11px;&quot;&gt;- currentMana&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ CastSpell()&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ Attack()&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="175" x="415" y="575" as="geometry" />
+        </mxCell>
+        <mxCell id="rogue" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#eef7ec;strokeColor=#82b366;" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;Ranger&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-family: monospace; font-size: 11px;&quot;&gt;+ Attack()&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="175" x="620" y="595" as="geometry" />
+        </mxCell>
+        <mxCell id="char_ex" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#fde7e5;strokeColor=#b85450;" value="&lt;b&gt;CharacterIsDefeatedException&lt;/b&gt;" vertex="1">
+          <mxGeometry height="58" width="245" x="90" y="705" as="geometry" />
+        </mxCell>
+        <mxCell id="mana_ex" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#fde7e5;strokeColor=#b85450;" value="&lt;b&gt;InsufficientManaException&lt;/b&gt;" vertex="1">
+          <mxGeometry height="58" width="230" x="398" y="705" as="geometry" />
+        </mxCell>
+        <mxCell id="e_char_damage" edge="1" parent="1" source="character" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;endArrow=block;endFill=0;endSize=14;dashed=1;dashPattern=7 6;" target="idamageable">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_mon_damage" edge="1" parent="1" source="monster" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;endArrow=block;endFill=0;endSize=14;dashed=1;dashPattern=7 6;" target="idamageable">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="182" y="260" />
+              <mxPoint x="355" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_war_char" edge="1" parent="1" source="warrior" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;endArrow=block;endFill=0;endSize=14;" target="character">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="298" y="540" />
+              <mxPoint x="390" y="540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_mage_char" edge="1" parent="1" source="mage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;endArrow=block;endFill=0;endSize=14;" target="character">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rog_char" edge="1" parent="1" source="rogue" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;endArrow=block;endFill=0;endSize=14;" target="character">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="708" y="540" />
+              <mxPoint x="540" y="540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_mage_spell" edge="1" parent="1" source="mage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;endArrow=block;endFill=0;endSize=14;dashed=1;dashPattern=7 6;" target="ispellcaster">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="615" y="270" />
+              <mxPoint x="762" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_char_ex" edge="1" parent="1" source="character" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;dashed=1;dashPattern=7 6;endArrow=open;endFill=0;endSize=14;fontColor=#64748b;fontSize=10;labelBackgroundColor=#f7f9fc;" target="char_ex" value="kaster">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="392" y="675" />
+              <mxPoint x="212" y="675" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_mana_ex" edge="1" parent="1" source="mage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;dashed=1;dashPattern=7 6;endArrow=open;endFill=0;endSize=14;fontColor=#64748b;fontSize=10;labelBackgroundColor=#f7f9fc;" target="mana_ex" value="kaster">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="503" y="690" />
+              <mxPoint x="550" y="690" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="item" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#e5eefc;strokeColor=#6c8ebf;" value="&lt;font color=&quot;#64748b&quot; style=&quot;font-size:11px&quot;&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;Item&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ Name : string&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ Describe() : string&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="250" x="1210" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="weapon" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#f0e9f4;strokeColor=#9673a6;" value="&lt;b&gt;Weapon&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ DamageBonus : int&lt;/div&gt;" vertex="1">
+          <mxGeometry height="82" width="200" x="1015" y="345" as="geometry" />
+        </mxCell>
+        <mxCell id="armor" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#f0e9f4;strokeColor=#9673a6;" value="&lt;b&gt;Armor&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ DefenseBonus : int&lt;/div&gt;" vertex="1">
+          <mxGeometry height="82" width="200" x="1260" y="345" as="geometry" />
+        </mxCell>
+        <mxCell id="potion" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#f0e9f4;strokeColor=#9673a6;" value="&lt;b&gt;Potion&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ HealAmount : int&lt;/div&gt;" vertex="1">
+          <mxGeometry height="82" width="200" x="1505" y="345" as="geometry" />
+        </mxCell>
+        <mxCell id="slot" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#f4f4f5;strokeColor=#666666;" value="&lt;font color=&quot;#64748b&quot; style=&quot;font-size:11px&quot;&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;EquipmentSlot&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;Weapon&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;Armor&lt;/div&gt;" vertex="1">
+          <mxGeometry height="95" width="195" x="1505" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="e_weapon_item" edge="1" parent="1" source="weapon" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;endArrow=block;endFill=0;endSize=14;" target="item">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1115" y="300" />
+              <mxPoint x="1270" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_armor_item" edge="1" parent="1" source="armor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;endArrow=block;endFill=0;endSize=14;" target="item">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_potion_item" edge="1" parent="1" source="potion" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;endArrow=block;endFill=0;endSize=14;" target="item">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1605" y="300" />
+              <mxPoint x="1405" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="item_notes" parent="1" style="rounded=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#d7dee8;fontFamily=Arial;fontSize=12;fontColor=#64748b;align=left;verticalAlign=middle;spacingLeft=14;" value="&lt;b&gt;&lt;font color=&quot;#334155&quot;&gt;Character ◆ Item&lt;/font&gt;&lt;/b&gt;&amp;nbsp;&amp;nbsp; inventory + equippedItems&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#334155&quot;&gt;Character → EquipmentSlot&lt;/font&gt;&lt;/b&gt;&amp;nbsp;&amp;nbsp; bruges af Equip(...)" vertex="1">
+          <mxGeometry height="58" width="690" x="1010" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="idiceroller" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#fff4c7;strokeColor=#d6b656;" value="&lt;font color=&quot;#64748b&quot; style=&quot;font-size:11px&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;IDiceRoller&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ Roll(int sides) : int&lt;/div&gt;" vertex="1">
+          <mxGeometry height="85" width="245" x="1235" y="605" as="geometry" />
+        </mxCell>
+        <mxCell id="randomdice" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#fff4c7;strokeColor=#d6b656;" value="&lt;b&gt;RandomDiceRoller&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="250" x="1060" y="735" as="geometry" />
+        </mxCell>
+        <mxCell id="fixeddice" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#fff4c7;strokeColor=#d6b656;" value="&lt;b&gt;FixedDiceRoller&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="250" x="1400" y="735" as="geometry" />
+        </mxCell>
+        <mxCell id="e_random_dice" edge="1" parent="1" source="randomdice" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;endArrow=block;endFill=0;endSize=14;dashed=1;dashPattern=7 6;" target="idiceroller">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1185" y="715" />
+              <mxPoint x="1300" y="715" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_fixed_dice" edge="1" parent="1" source="fixeddice" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;endArrow=block;endFill=0;endSize=14;dashed=1;dashPattern=7 6;" target="idiceroller">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1525" y="715" />
+              <mxPoint x="1415" y="715" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="char_ref" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#f8fafc;strokeColor=#94a3b8;dashed=1;" value="&lt;font color=&quot;#64748b&quot; style=&quot;font-size:11px&quot;&gt;reference&lt;/font&gt;&lt;br&gt;&lt;b&gt;Character&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;0..* medlemmer&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="235" x="110" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="party" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#dff4f5;strokeColor=#0e8088;" value="&lt;b&gt;Party&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ Name&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ AddMember(Character)&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ IsDefeated&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="250" x="410" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="encounter" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#dff4f5;strokeColor=#0e8088;" value="&lt;b&gt;Encounter&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;- statusEffects&lt;/div&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;+ PlayRound()&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="280" x="760" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="monster_ref" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#f8fafc;strokeColor=#94a3b8;dashed=1;" value="&lt;font color=&quot;#64748b&quot; style=&quot;font-size:11px&quot;&gt;reference&lt;/font&gt;&lt;br&gt;&lt;b&gt;Monster&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;bruges i kamp&lt;/div&gt;" vertex="1">
+          <mxGeometry height="82" width="190" x="1150" y="925" as="geometry" />
+        </mxCell>
+        <mxCell id="dice_ref" parent="1" style="html=1;whiteSpace=wrap;rounded=1;arcSize=12;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;strokeWidth=1.5;shadow=0;fillColor=#f8fafc;strokeColor=#94a3b8;dashed=1;" value="&lt;font color=&quot;#64748b&quot; style=&quot;font-size:11px&quot;&gt;reference&lt;/font&gt;&lt;br&gt;&lt;b&gt;IDiceRoller&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-family:monospace;font-size:11px&quot;&gt;bruges til slag&lt;/div&gt;" vertex="1">
+          <mxGeometry height="82" width="210" x="1410" y="925" as="geometry" />
+        </mxCell>
+        <mxCell id="e_party_char" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;startArrow=diamondThin;startFill=0;startSize=18;endArrow=none;fontColor=#64748b;fontSize=10;labelBackgroundColor=#f7f9fc;" value="">
+          <mxGeometry relative="1" x="0.2308" y="30" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="410" y="979.88" as="sourcePoint" />
+            <mxPoint x="345" y="979.88" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_party_enc" edge="1" parent="1" source="party" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;endArrow=open;endFill=0;endSize=14;fontColor=#64748b;fontSize=10;labelBackgroundColor=#f7f9fc;" target="encounter" value="&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;starter kamp&lt;/span&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_enc_mon" edge="1" parent="1" source="encounter" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;dashed=1;dashPattern=7 6;endArrow=open;endFill=0;endSize=14;fontColor=#64748b;fontSize=10;labelBackgroundColor=#f7f9fc;" target="monster_ref" value="&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;uses&lt;/span&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_enc_dice" edge="1" parent="1" source="encounter" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5b677a;strokeWidth=1.7;dashed=1;dashPattern=7 6;endArrow=open;endFill=0;endSize=14;fontColor=#64748b;fontSize=10;labelBackgroundColor=#f7f9fc;" target="dice_ref" value="">
+          <mxGeometry relative="1" x="-0.0001" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1345" y="1030" />
+              <mxPoint x="1345" y="965" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" parent="1" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#e2e8f0;fontFamily=Arial;fontSize=11;fontColor=#475569;align=left;verticalAlign=middle;spacingLeft=14;" value="&lt;b&gt;Hul trekant&lt;/b&gt; = arv &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;b&gt;Stiplet + hul trekant&lt;/b&gt; = interface &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;b&gt;◇&lt;/b&gt; = aggregation &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;b&gt;◆&lt;/b&gt; = komposition &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;b&gt;Stiplet åben pil&lt;/b&gt; = dependency / throws&lt;br&gt;&lt;font color=&quot;#64748b&quot;&gt;Reference-bokse gentages kun for at undgå lange krydsende streger.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="42" width="1590" x="80" y="1080" as="geometry" />
+        </mxCell>
+        <mxCell id="uFX0HY_CTpJzCrmlPeML-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" value="0..*" vertex="1">
+          <mxGeometry height="20" width="40" x="358" y="956" as="geometry" />
+        </mxCell>
+        <mxCell id="uFX0HY_CTpJzCrmlPeML-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="uses" vertex="1">
+          <mxGeometry height="10" width="35" x="1260" y="1038" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
