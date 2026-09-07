@@ -8,8 +8,8 @@ namespace Eventyrerlauget.Combat;
 
 /// <summary>
 /// A single fight between the adventuring party and a list of monsters.
-/// Play() asks the player what each living hero should do, then lets the
-/// monsters strike back, until one side is gone.
+/// Each round alternates monster and hero turns (monsters first, like an ambush)
+/// until one side is gone.
 /// </summary>
 internal class Encounter
 {
@@ -39,7 +39,7 @@ internal class Encounter
 
     /// <summary>
     /// Runs rounds until the party or the monsters are defeated.
-    /// Each living hero chooses an action; then each living monster attacks back.
+    /// Monsters and heroes take turns in an alternating order (monsters first).
     /// </summary>
     /// <returns><c>true</c> if the party won; <c>false</c> if the party was defeated.</returns>
     internal bool Play()
@@ -56,13 +56,7 @@ internal class Encounter
             Ui.RenderCombatStatus(_party, _monsters);
             Ui.Spacer();
 
-            PlayHeroTurns();
-
-            // Skip monster turns if the last hero just killed the final foe.
-            if (!IsOver())
-            {
-                PlayMonsterTurns();
-            }
+            PlayRound();
 
             Ui.Spacer();
             Ui.RenderCombatStatus(_party, _monsters);
@@ -79,26 +73,21 @@ internal class Encounter
         return !_party.IsDefeated();
     }
 
-    // One pass over the party: poison ticks, then the player picks an action.
-    private void PlayHeroTurns()
+    // Snapshot who is alive, then alternate monster / hero / monster / hero.
+    // Monsters go first so three hero actions cannot wipe the fight before anyone strikes back.
+    private void PlayRound()
     {
-        foreach (Character hero in _party.Members)
+        List<Monster> monsterOrder = _monsters.Where(monster => monster.IsAlive).ToList();
+        List<Character> heroOrder = _party.Members.Where(hero => hero.IsAlive).ToList();
+
+        int monsterIndex = 0;
+        int heroIndex = 0;
+        while (!IsOver() && (monsterIndex < monsterOrder.Count || heroIndex < heroOrder.Count))
         {
-            if (IsOver())
+            if (monsterIndex < monsterOrder.Count)
             {
-                return;
-            }
-
-            if (!hero.IsAlive)
-            {
-                continue;
-            }
-
-            // TickPoison returns "" when the hero is not poisoned; Narrate ignores blanks.
-            Ui.Narrate(hero.TickPoison());
-            if (!hero.IsAlive)
-            {
-                continue;
+                PlayMonsterTurn(monsterOrder[monsterIndex]);
+                monsterIndex++;
             }
 
             if (IsOver())
@@ -106,8 +95,35 @@ internal class Encounter
                 return;
             }
 
-            PlayHeroTurn(hero);
+            if (heroIndex < heroOrder.Count)
+            {
+                TakeHeroTurn(heroOrder[heroIndex]);
+                heroIndex++;
+            }
         }
+    }
+
+    // Poison ticks, then the player picks an action — skipped if this hero already fell.
+    private void TakeHeroTurn(Character hero)
+    {
+        if (!hero.IsAlive)
+        {
+            return;
+        }
+
+        // TickPoison returns "" when the hero is not poisoned; Narrate ignores blanks.
+        Ui.Narrate(hero.TickPoison());
+        if (!hero.IsAlive)
+        {
+            return;
+        }
+
+        if (IsOver())
+        {
+            return;
+        }
+
+        PlayHeroTurn(hero);
     }
 
     // Prompt the player, then run Attack / CastSpell / DrinkPotion on this hero.
@@ -168,35 +184,28 @@ internal class Encounter
         }
     }
 
-    private void PlayMonsterTurns()
+    // One living monster hits a random living hero. Dead monsters in the snapshot are skipped.
+    private void PlayMonsterTurn(Monster monster)
     {
-        foreach (Monster monster in _monsters)
+        if (!monster.IsAlive)
         {
-            if (IsOver())
-            {
-                return;
-            }
+            return;
+        }
 
-            if (!monster.IsAlive)
-            {
-                continue;
-            }
+        Character? target = RandomLivingHero();
+        if (target is null)
+        {
+            return;
+        }
 
-            Character? target = RandomLivingHero();
-            if (target is null)
-            {
-                return;
-            }
-
-            try
-            {
-                Ui.Narrate(monster.Attack(target, _dice));
-                NarrateIfDefeated(target);
-            }
-            catch (CharacterIsDefeatedException ex)
-            {
-                Ui.Narrate(ex.Message);
-            }
+        try
+        {
+            Ui.Narrate(monster.Attack(target, _dice));
+            NarrateIfDefeated(target);
+        }
+        catch (CharacterIsDefeatedException ex)
+        {
+            Ui.Narrate(ex.Message);
         }
     }
 
