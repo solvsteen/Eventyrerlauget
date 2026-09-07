@@ -47,11 +47,11 @@ internal class Encounter
     /// </summary>
     internal void PlayRound()
     {
-        foreach (Character character in Party.Members)
+        foreach (Character character in _party.Members)
         {
             if (!character.IsAlive) continue;
 
-            Monster? targetMonster = _monsters.FirstOrDefault<Monster>(monster => monster.IsAlive);
+            Monster? targetMonster = _monsters.FirstOrDefault(monster => monster.IsAlive);
 
             if (targetMonster == null) return;
 
@@ -81,11 +81,16 @@ internal class Encounter
         {
             if (!monster.IsAlive) continue;
 
-            Character? targetCharacter = Party.AliveMembers().FirstOrDefault();
+            Character? targetCharacter = _party.AliveMembers().FirstOrDefault();
 
             if (targetCharacter == null) return;
 
             monster.Attack(targetCharacter, _dice);
+
+            if (targetCharacter.IsAlive)
+            {
+                targetCharacter.Attack(monster, _dice);
+            }
         }
     }
 
