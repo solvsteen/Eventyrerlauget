@@ -1,9 +1,10 @@
+using Eventyrerlauget.Characters;
 using Eventyrerlauget.Dice;
 using Eventyrerlauget.Exceptions;
 
 namespace Eventyrerlauget.Combat;
 
-
+// An enemy in a fight. Same IDamageable contract as Character, plus an optional poison bite.
 public class Monster : IDamageable
 {
     public string Name { get; private set; }
@@ -46,7 +47,8 @@ public class Monster : IDamageable
         HP = Math.Max(0, HP - damage);
     }
 
-    public void Attack(IDamageable target, IDiceRoller diceRoller)
+    // Returns a combat-log line. 1 on a d6 misses; 6 is a critical (double damage).
+    public string Attack(IDamageable target, IDiceRoller diceRoller)
     {
         // A slain monster cannot act. IsAlive itself does not throw; this call does.
         if (!IsAlive)
@@ -54,7 +56,47 @@ public class Monster : IDamageable
             throw new CharacterIsDefeatedException(Name);
         }
 
-        int damage = diceRoller.Roll(6);
-        target.TakeDamage(damage * PoisonChancePercent);
+        int roll = diceRoller.Roll(6);
+        if (roll == 1)
+        {
+            return $"{Name} misses {target.Name}.";
+        }
+
+        int damage = roll;
+        // A 6 on a d6 is a critical: double the dice before armor.
+        bool isCritical = roll == 6;
+        if (isCritical)
+        {
+            damage *= 2;
+        }
+
+        // Pattern matching: only heroes wear armor, so only they can mitigate.
+        if (target is Character hero)
+        {
+            damage = hero.MitigateDamage(damage);
+        }
+
+        if (damage <= 0)
+        {
+            return $"The attack glances past {target.Name}.";
+        }
+
+        target.TakeDamage(damage);
+
+        string line = isCritical
+            ? $"{Name} lands a critical hit on {target.Name} for {damage} damage."
+            : $"{Name} hits {target.Name} for {damage} damage.";
+
+        if (IsPoisonous && target is Character victim && victim.IsAlive)
+        {
+            // d100 vs PoisonChancePercent (e.g. 25 = 25% chance).
+            if (diceRoller.Roll(100) <= PoisonChancePercent)
+            {
+                victim.ApplyPoison();
+                line += $" {victim.Name} is poisoned!";
+            }
+        }
+
+        return line;
     }
 }

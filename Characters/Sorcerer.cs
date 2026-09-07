@@ -4,10 +4,12 @@ using Eventyrerlauget.Exceptions;
 
 namespace Eventyrerlauget.Characters;
 
+// Spellcasting hero. ISpellcaster adds mana and CastSpell on top of Character.Attack.
 public class Sorcerer : Character, ISpellcaster
 {
     public int CurrentMana { get; private set; }
     public int MaxMana { get; private set; }
+    // Fireball costs this much mana and adds SpellPowerBonus on top of a d10.
     public int SpellManaCost { get; private set; } = 5;
     public int SpellPowerBonus { get; private set; } = 3;
 
@@ -40,6 +42,18 @@ public class Sorcerer : Character, ISpellcaster
         int damage = diceRoller.Roll(10) + SpellPowerBonus;
         target.TakeDamage(damage);
 
+        // The UI colors this line from words like "casts"; Encounter adds a "defeated" line if the target dies.
         return $"{Name} casts a fireball at {target.Name} for {damage} magical damage (mana: {CurrentMana}/{MaxMana}).";
+    }
+
+    public void RestoreMana(int amount)
+    {
+        if (amount < 0)
+        {
+            throw new ArgumentException("Mana restored cannot be negative.", nameof(amount));
+        }
+
+        // Math.Min keeps mana from going above MaxMana (same idea as Heal and MaxHP).
+        CurrentMana = Math.Min(MaxMana, CurrentMana + amount);
     }
 }

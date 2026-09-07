@@ -17,6 +17,95 @@ public static class Ui
 
     public static void Spacer() => AnsiConsole.WriteLine();
 
+    public static void Clear() => AnsiConsole.Clear();
+
+    // Opening screen for a new adventure (or a "venture forth again" run).
+    public static void TitleScreen()
+    {
+        AnsiConsole.Clear();
+        SectionRule("Eventyrerlauget", GoldMarkup);
+        AnsiConsole.MarkupLine("[grey58]Assemble the party. Choose your actions. Let the golden die decide.[/]");
+        Spacer();
+    }
+
+    // TextPrompt shows defaultName; Enter keeps it. Validate blocks a blank name
+    // so Character's constructor does not throw ArgumentException later.
+    public static string AskName(string role, string defaultName)
+    {
+        return AnsiConsole.Prompt(
+            new TextPrompt<string>($"{Markup.Escape(role)}'s name:")
+                .DefaultValue(defaultName)
+                .PromptStyle(GoldMarkup)
+                .Validate(name => string.IsNullOrWhiteSpace(name)
+                    ? ValidationResult.Error("Name cannot be empty.")
+                    : ValidationResult.Success()));
+    }
+
+    // Markup.Escape so a custom message cannot break Spectre color tags.
+    public static void PromptContinue(string message = "Press any key to continue...")
+    {
+        Spacer();
+        AnsiConsole.MarkupLine($"[grey58]{Markup.Escape(message)}[/]");
+        Console.ReadKey(true);
+    }
+
+    // defaultValue: false = the highlighted answer is No, so Enter does not restart by accident.
+    public static bool Confirm(string question)
+    {
+        return AnsiConsole.Confirm(question, defaultValue: false);
+    }
+
+    // SelectionPrompt lists only actions this hero can take (spell if caster, potion if any).
+    // UseConverter shows Label; we return the HeroAction the Encounter switch expects.
+    public static HeroAction ChooseHeroAction(Character hero)
+    {
+        var options = new List<(HeroAction Action, string Label)>
+        {
+            (HeroAction.Attack, "Attack"),
+        };
+
+        if (hero is ISpellcaster caster)
+        {
+            options.Add((HeroAction.CastSpell, $"Cast fireball ({caster.CurrentMana}/{caster.MaxMana} mana)"));
+        }
+
+        int potionCount = hero.Potions().Count();
+        if (potionCount > 0)
+        {
+            string label = potionCount == 1 ? "Drink a potion" : $"Drink a potion ({potionCount})";
+            options.Add((HeroAction.DrinkPotion, label));
+        }
+
+        return AnsiConsole.Prompt(
+            new SelectionPrompt<(HeroAction Action, string Label)>()
+                .Title($"What should [bold]{Markup.Escape(hero.Name)}[/] do?")
+                .HighlightStyle(new Style(Color.Gold1))
+                .UseConverter(option => option.Label)
+                .AddChoices(options))
+            .Action;
+    }
+
+    // Title is escaped: it includes the hero's name, which is player text.
+    public static Monster ChooseMonster(string title, IReadOnlyList<Monster> monsters)
+    {
+        return AnsiConsole.Prompt(
+            new SelectionPrompt<Monster>()
+                .Title(Markup.Escape(title))
+                .HighlightStyle(new Style(Color.Gold1))
+                .UseConverter(monster => $"{monster.Name} ({monster.HP}/{monster.MaxHP} HP)")
+                .AddChoices(monsters));
+    }
+
+    public static Potion ChoosePotion(Character hero, IReadOnlyList<Potion> potions)
+    {
+        return AnsiConsole.Prompt(
+            new SelectionPrompt<Potion>()
+                .Title($"Which potion should [bold]{Markup.Escape(hero.Name)}[/] drink?")
+                .HighlightStyle(new Style(Color.Gold1))
+                .UseConverter(potion => potion.Describe())
+                .AddChoices(potions));
+    }
+
     // Small label so the player can see whether dice are random or fixed.
     // Markup.Escape stops a description like "x[/]" from breaking the color tags.
     public static void DiceRollerBadge(string description)
@@ -62,9 +151,10 @@ public static class Ui
         AnsiConsole.WriteLine();
     }
 
-    public static void EncounterIntro(IEnumerable<Monster> monsters)
+    public static void EncounterIntro(IEnumerable<Monster> monsters, string title = "A battle begins!")
     {
-        SectionRule("A battle begins!", "red3");
+        // title comes from Encounter.Name (e.g. "A goblin ambush!"). Empty => fallback.
+        SectionRule(string.IsNullOrWhiteSpace(title) ? "A battle begins!" : title, "red3");
         RenderMonsters(monsters);
     }
 
@@ -85,13 +175,19 @@ public static class Ui
     // this is display-only.
     public static void Narrate(string line)
     {
+        if (string.IsNullOrWhiteSpace(line))
+        {
+            return;
+        }
+
         string escaped = Markup.Escape(line);
         string? style = ClassifyNarration(line);
         // No match => plain indented text. Match => wrap in [style]...[/].
         AnsiConsole.MarkupLine(style is null ? $"  {escaped}" : $"  [{style}]{escaped}[/]");
     }
 
-    // FigletText is the big ASCII-art banner at the end of a fight.
+    // FigletText is the big ASCII-art banner at the end of the whole adventure
+    // (last fight won, or the party wiped) — not after each encounter.
     public static void VictoryBanner()
     {
         AnsiConsole.Write(new FigletText("VICTORY!").Centered().Color(Color.SpringGreen2));
@@ -158,6 +254,12 @@ public static class Ui
             $"Level {hero.Level}",
             $"HP  {Bar(hero.HP, hero.MaxHP, HpBarColor(hero.HP, hero.MaxHP))} {hero.HP}/{hero.MaxHP}",
         };
+
+        // Purple line only while the hero is still standing; defeated cards use DEFEATED instead.
+        if (hero.IsPoisoned && hero.IsAlive)
+        {
+            lines.Add("[mediumpurple3]Poisoned[/]");
+        }
 
         // Pattern matching: only spellcasters (Sorcerer) have a mana bar.
         if (hero is ISpellcaster caster)
@@ -227,6 +329,12 @@ public static class Ui
         {
             $"HP {Bar(hero.HP, hero.MaxHP, HpBarColor(hero.HP, hero.MaxHP), width: 10)} {hero.HP}/{hero.MaxHP}",
         };
+
+        // Same poison flag as the full card, but this HUD is shown during the fight.
+        if (hero.IsPoisoned && hero.IsAlive)
+        {
+            lines.Add("[mediumpurple3]Poisoned[/]");
+        }
 
         if (hero is ISpellcaster caster)
         {
